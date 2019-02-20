@@ -27,7 +27,7 @@ class ToFloat:
         for element in sample:
             if isinstance(element, np.ndarray) and element.ndim == 3 and element.dtype == np.uint8:
                 element = element.astype(np.float32) / 255
-            out_sample.append((element))
+            out_sample.append(element)
         return out_sample
 
     def __repr__(self):
@@ -40,7 +40,7 @@ class ToInteger:
         for element in sample:
             if isinstance(element, np.ndarray) and element.ndim == 3 and element.dtype == np.float32:
                 element = (element * 255).astype(np.uint8)
-            out_sample.append((element))
+            out_sample.append(element)
         return out_sample
 
     def __repr__(self):
