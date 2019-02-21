@@ -53,7 +53,7 @@ Some of the images are contained in both of the datasets. To find these files, a
 To exclude these files from the RVL-CDIP dataset, set the `exclude_tobacco` flag in `CDIP` to `True`.
 
 ## Dataset Iterators
-Refer to `example.ipynb` for how to use the dataset iterators.
+Refer to `example_dataset.ipynb` for how to use the dataset iterators.
 
 ### Tobacco-3482 Iterator
 The `datasets.Tobacco` class takes the following options:
