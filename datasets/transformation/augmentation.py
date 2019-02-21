@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 
 class DownScale:
@@ -7,8 +8,9 @@ class DownScale:
         self.target_resolution = target_resolution
 
     def __call__(self, image, *args):
-        image_low = cv2.resize(image, dsize=self.target_resolution, interpolation=cv2.INTER_LINEAR)
-
+        image_low = cv2.resize(image, dsize=self.target_resolution, interpolation=cv2.INTER_NEAREST)
+        if image_low.ndim == 2:
+            image_low = image_low[:, :, np.newaxis]
         result = [image_low]
 
         if args is None:
