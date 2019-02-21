@@ -3,7 +3,7 @@ from lxml import etree
 from multiprocessing import Pool
 import os
 
-base_path = "/home/koelscha/Downloads/rvl-cdip/"
+base_path = "/home/akoelsch/Downloads/rvl-cdip/"
 
 
 def target_function(line):
@@ -23,7 +23,7 @@ def target_function(line):
     ocr = record.findall("*ot")
     text = ""
     if len(ocr) == 1:
-        text = ocr[0].text
+        text = ocr[0].text.split("pgNbr", 1)[0]
     elif len(ocr) == 0:
         pass
     else:
@@ -38,6 +38,6 @@ def target_function(line):
 
 for partition in ["train", "val", "test"]:
     gt_file = open(base_path + "labels/" + partition + ".txt").readlines()
-    pool = Pool(processes=32)
+    pool = Pool(processes=24)
     for _ in tqdm.tqdm(pool.imap_unordered(target_function, gt_file), total=len(gt_file)):
         pass
